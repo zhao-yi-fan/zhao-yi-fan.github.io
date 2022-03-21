@@ -1,7 +1,44 @@
 import { FormEvent } from "react";
+/* 
+interface Base {
+  id: number;
+}
+interface Advance extends Base {
+  name: string;
+}
+
+const test = (p: Base) => {}; // java: test方法的参数必须是Base类型 ts: 方法入参不必须是Base类型，只要满足Base类型就不会报错
+
+// 鸭子类型(duck typing)：面向接口编程 而不是 面向对象编程
+// const a:Advance = { id: 1, name: "jack" };
+const a = { id: 1, name: "jack" };
+test(a);
+ */
+
+const apiUrl = process.env.REACT_APP_API_URL;
 
 export const LoginScreen = () => {
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {};
+  const login = (param: { username: string; password: string }) => {
+    fetch(`${apiUrl}/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+      },
+      body: JSON.stringify(param),
+    }).then(async (res) => {
+      if (res.ok) {
+      }
+    });
+  };
+  // HTMLFormElement extends Element
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const username = (event.currentTarget.elements[0] as HTMLInputElement)
+      .value;
+    const password = (event.currentTarget.elements[1] as HTMLInputElement)
+      .value;
+    login({ username, password });
+  };
   return (
     <form onSubmit={handleSubmit}>
       <div>
