@@ -44,7 +44,6 @@ export const LoginScreen = () => {
         <input type="password" id={"password"} />
       </div>
       <button type="submit">登录</button>
-      <button type="submit">注册</button>
     </form>
   );
 };
