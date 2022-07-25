@@ -1,6 +1,7 @@
 import { useAuth } from "context/auth-context";
 import { FormEvent } from "react";
 import { Button, Form, Input } from "antd";
+import { LongButton } from "unauthenticated-app";
 /* 
 interface Base {
   id: number;
@@ -39,9 +40,9 @@ export const RegisterScreen = () => {
         <Input type="text" id={"password"} placeholder={"密码"} />
       </Form.Item>
       <Form.Item>
-        <Button htmlType={"submit"} type={"primary"}>
+        <LongButton htmlType={"submit"} type={"primary"}>
           登录
-        </Button>
+        </LongButton>
       </Form.Item>
     </Form>
   );
