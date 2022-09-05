@@ -18,12 +18,23 @@ const a = { id: 1, name: "jack" };
 test(a);
  */
 
-export const RegisterScreen = () => {
+export const RegisterScreen = ({
+  onError,
+}: {
+  onError: (error: Error) => void;
+}) => {
   const { register, user } = useAuth();
 
   // HTMLFormElement extends Element
-  const handleSubmit = (values: { username: string; password: string }) => {
-    register(values);
+  const handleSubmit = async (values: {
+    username: string;
+    password: string;
+  }) => {
+    try {
+      await register(values);
+    } catch (e: any) {
+      onError(e);
+    }
   };
   return (
     <Form onFinish={handleSubmit}>

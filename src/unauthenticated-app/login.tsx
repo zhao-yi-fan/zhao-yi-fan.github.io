@@ -18,12 +18,23 @@ const a = { id: 1, name: "jack" };
 test(a);
  */
 
-export const LoginScreen = () => {
+export const LoginScreen = ({
+  onError,
+}: {
+  onError: (error: Error) => void;
+}) => {
   const { login, user } = useAuth();
 
   // HTMLFormElement extends Element
-  const handleSubmit = (values: { username: string; password: string }) => {
-    login(values);
+  const handleSubmit = async (values: {
+    username: string;
+    password: string;
+  }) => {
+    try {
+      await login(values);
+    } catch (e: any) {
+      onError(e);
+    }
   };
   return (
     <Form onFinish={handleSubmit}>

@@ -27,7 +27,7 @@ export const AuthenticatedApp = () => {
               </Menu>
             }
           >
-            <Button type="link" onClick={logout}>
+            <Button type="link">
               Hi, {user?.name}
             </Button>
           </Dropdown>
