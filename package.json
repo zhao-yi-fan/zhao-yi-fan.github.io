@@ -12,7 +12,6 @@
     "@types/jest": "^27.4.1",
     "@types/node": "^16.11.26",
     "@types/qs": "^6.9.7",
-    "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.13",
     "antd": "^4.21.5",
     "craco-less": "^1.20.0",
@@ -59,6 +58,7 @@
   "devDependencies": {
     "@commitlint/cli": "^16.2.1",
     "@commitlint/config-conventional": "^16.2.1",
+    "@types/react": "^18.0.25",
     "eslint-config-prettier": "^8.5.0",
     "husky": "^7.0.4",
     "lint-staged": "^12.3.4",
