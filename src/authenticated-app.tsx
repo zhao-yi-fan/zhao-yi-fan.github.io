@@ -3,10 +3,20 @@ import { Row } from 'components/lib';
 import { useAuth } from 'context/auth-context';
 import { ProjectListScreent } from 'screens/project-list';
 import { ReactComponent as SoftWareLogo } from 'assets/software-logo.svg';
-import { Button, Dropdown, Menu } from 'antd';
+import { Button, Dropdown } from 'antd';
 
 export const AuthenticatedApp = () => {
   const { logout, user } = useAuth();
+  const items = [
+    {
+      label: (
+        <Button type="link" onClick={logout}>
+          登出
+        </Button>
+      ),
+      key: 'logout',
+    },
+  ];
   return (
     <Container>
       <Header between={true}>
@@ -16,20 +26,8 @@ export const AuthenticatedApp = () => {
           <h2>用户</h2>
         </HeaderLeft>
         <HeaderRight>
-          <Dropdown
-            overlay={
-              <Menu>
-                <Menu.Item>
-                  <Button type="link" onClick={logout}>
-                    登出
-                  </Button>
-                </Menu.Item>
-              </Menu>
-            }
-          >
-            <Button type="link">
-              Hi, {user?.name}
-            </Button>
+          <Dropdown menu={{ items }}>
+            <Button type="link">Hi, {user?.name}</Button>
           </Dropdown>
         </HeaderRight>
       </Header>
