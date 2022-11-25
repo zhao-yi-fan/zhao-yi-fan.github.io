@@ -15,12 +15,22 @@ const data = [
   {
     title: 'bunny-ui',
     link: './bunny-ui/',
-    description: 'vue2+webpack',
+    description: 'vue2组件库',
+  },
+  {
+    title: 'bunny-ui-next',
+    link: './bunny-ui-next/',
+    description: 'vue3组件库',
   },
   {
     title: 'jira管理',
     link: './jira/',
     description: 'react17',
+  },
+  {
+    title: '学习总结代码',
+    link: './study/',
+    description: '总结小栗子',
   },
 ];
 
