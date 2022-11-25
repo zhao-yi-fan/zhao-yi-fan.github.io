@@ -29,7 +29,7 @@ export const useMount = (callback: () => void) => {
   useEffect(() => {
     callback();
     // TODO 依赖项里加上callback会造成无限循环，这个和useCallback以及useMemo有关系
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 };
 
@@ -80,4 +80,22 @@ export const useArray = <T>(initialArray: T[]) => {
     removeIndex,
     add,
   };
+};
+
+export const useDocumentTitle = (title: string, keepUnmount: boolean) => {
+  const oldTitle = document.title
+  console.log('渲染时的title', oldTitle);
+  
+  useEffect(()=>{
+    document.title = title
+  },[title])
+
+  useEffect(()=>{
+    return ()=>{
+      if(!keepUnmount){
+        document.title = oldTitle
+        console.log('卸载时的title', oldTitle);
+      }
+    }
+  },[])
 };
