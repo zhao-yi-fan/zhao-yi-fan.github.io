@@ -32,7 +32,7 @@ function App() {
         dataSource={data}
         renderItem={(item) => (
           <List.Item>
-            <a href={item.link}>
+            <a href={item.link} target={'_blank'} rel="noreferrer">
               <Card hoverable title={item.title}>
                 <Card.Meta title={item.title} description={item.description} />
               </Card>
