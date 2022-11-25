@@ -82,7 +82,7 @@ export const useArray = <T>(initialArray: T[]) => {
   };
 };
 
-export const useDocumentTitle = (title: string, keepUnmount: boolean) => {
+/* export const useDocumentTitle = (title: string, keepUnmount: boolean) => {
   const oldTitle = document.title
   console.log('渲染时的title', oldTitle);
   
@@ -98,4 +98,4 @@ export const useDocumentTitle = (title: string, keepUnmount: boolean) => {
       }
     }
   },[])
-};
+}; */

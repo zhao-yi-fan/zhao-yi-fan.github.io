@@ -1,6 +1,5 @@
 import { useAuth } from 'context/auth-context';
-import { FormEvent } from 'react';
-import { Button, Form, Input } from 'antd';
+import { Form, Input } from 'antd';
 import { LongButton } from 'unauthenticated-app';
 import { useAsync } from 'utils/use-async';
 /* 
@@ -24,7 +23,7 @@ export const LoginScreen = ({
 }: {
   onError: (error: Error) => void;
 }) => {
-  const { login, user } = useAuth();
+  const { login } = useAuth();
   const { run, isLoading } = useAsync(undefined, { throwOnError: true });
 
   // HTMLFormElement extends Element

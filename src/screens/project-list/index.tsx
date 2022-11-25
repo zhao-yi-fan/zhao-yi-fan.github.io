@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDebounce, useDocumentTitle } from 'utils';
+import { useDebounce } from 'utils';
 import { List } from './list';
 import { SearchPanel } from './search-panel';
 import styled from '@emotion/styled';
@@ -18,7 +18,7 @@ export const ProjectListScreent = () => {
 
   const { data: users } = useUsers(debouncedParam);
 
-  useDocumentTitle('项目列表', false);
+  // useDocumentTitle('项目列表', false);
 
   return (
     <Container>

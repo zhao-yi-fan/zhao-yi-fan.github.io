@@ -57,12 +57,12 @@ export const useHttp = () => {
 // 交叉类型
 // let myFavoriteNumber: string & number;
 // 联合类型
-let myFavoriteNumber: string | number;
+/* let myFavoriteNumber: string | number;
 myFavoriteNumber = 'seven';
-myFavoriteNumber = 7;
+myFavoriteNumber = 7; */
 // 不能将类型“{}”分配给类型“string | number”。ts(2322)
 // myFavoriteNumber = {}
-let jackFavoriteNumber: string | number;
+// let jackFavoriteNumber: string | number;
 
 // 类型别名在很多情况下可以和interface互换
 // interface Person {
@@ -72,15 +72,15 @@ let jackFavoriteNumber: string | number;
 // const xiaoMing: Person = { name: "xiaoming" };
 
 // 1、类型别名, interface 在这种情况下没法替代type
-type FavoriteNumber = string | number;
-let roseFavoriteNumber: FavoriteNumber = '6';
+/* type FavoriteNumber = string | number;
+let roseFavoriteNumber: FavoriteNumber = '6'; */
 
 //2、 interface 无法实现Utility Types
-type Person = {
+/* type Person = {
   name: string;
   age: number;
 };
 // 在不改变原有type下，Partial可以让type中的属性都是可选的
 const xiaoMing: Partial<Person> = {};
 // 在不改变原有type下，Omit可以让type的某些属性删除
-const shenMiRen: Omit<Person, 'name' | 'age'> = { age: 11 };
+const shenMiRen: Omit<Person, 'name' | 'age'> = { age: 11 }; */

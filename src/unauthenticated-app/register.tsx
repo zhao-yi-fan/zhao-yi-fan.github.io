@@ -1,6 +1,5 @@
-import { Button, Form, Input } from 'antd';
+import { Form, Input } from 'antd';
 import { useAuth } from 'context/auth-context';
-import { FormEvent } from 'react';
 import { LongButton } from 'unauthenticated-app';
 import { useAsync } from 'utils/use-async';
 /* 
@@ -24,7 +23,7 @@ export const RegisterScreen = ({
 }: {
   onError: (error: Error) => void;
 }) => {
-  const { register, user } = useAuth();
+  const { register } = useAuth();
   const { run, isLoading } = useAsync(undefined, { throwOnError: true });
 
   // HTMLFormElement extends Element
