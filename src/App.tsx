@@ -32,6 +32,11 @@ const data = [
     link: './study/',
     description: '总结小栗子',
   },
+  {
+    title: 'netlify serverless',
+    link: 'https://determined-benz-6b3316.netlify.app/',
+    description: 'netlify serverless react17项目',
+  },
 ];
 
 function App() {
