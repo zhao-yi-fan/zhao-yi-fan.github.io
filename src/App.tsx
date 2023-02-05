@@ -4,7 +4,7 @@ import './App.css';
 const data = [
   {
     title: '笔记doc',
-    link: './note/',
+    link: 'https://blog.zhaoyifan.top',
     description: 'vitepress',
   },
   {
@@ -12,11 +12,11 @@ const data = [
     link: './take-out-platform/',
     description: 'vue3+vuex',
   },
-  {
-    title: 'bunny-ui',
-    link: './bunny-ui/',
-    description: 'vue2组件库',
-  },
+  // {
+  //   title: 'bunny-ui',
+  //   link: './bunny-ui/',
+  //   description: 'vue2组件库',
+  // },
   {
     title: 'bunny-ui-next',
     link: './bunny-ui-next/',
