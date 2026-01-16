@@ -1,46 +1,82 @@
-# Getting Started with Create React App
+# 项目中心
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+个人项目展示页面，使用 React 19 + TypeScript + Ant Design 5 构建。
 
-## Available Scripts
+## 🌐 在线访问
 
-In the project directory, you can run:
+- 网站地址：https://zhaoyifan.top
+- GitHub Pages：https://zhao-yi-fan.github.io
 
-### `npm start`
+## ✨ 特性
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- ⚡️ React 19.2.3 - 最新版本的 React
+- 📘 TypeScript - 类型安全
+- 🎨 Ant Design 5.x - 企业级 UI 设计语言
+- 📱 响应式设计 - 支持移动端和桌面端
+- 🚀 GitHub Actions 自动部署 - CI/CD 自动化
+- 📦 pnpm - 快速、节省磁盘空间的包管理器
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 🛠️ 技术栈
 
-### `npm test`
+- **框架**: React 19.2.3
+- **语言**: TypeScript 5.7.2
+- **UI 库**: Ant Design 5.24.8
+- **构建工具**: CRACO + react-scripts 5.0.1
+- **包管理器**: pnpm
+- **部署**: GitHub Pages + GitHub Actions
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 📦 安装依赖
 
-### `npm run build`
+```bash
+pnpm install
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🚀 开发
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+pnpm start
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+开发服务器将在 http://localhost:3000 启动
 
-### `npm run eject`
+## 🏗️ 构建
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```bash
+pnpm build
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+构建产物将输出到 `build` 目录
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## 🧪 测试
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```bash
+pnpm test
+```
 
-## Learn More
+## 📝 项目列表
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+当前展示的项目包括：
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- 📖 **笔记doc** - VitePress 博客
+- 📱 **移动端点餐** - Vue3 + Vuex 项目
+- 📋 **jira管理** - React 17 项目
+- 💻 **学习总结代码** - 学习示例集合
+
+## 🔧 项目配置
+
+### 环境要求
+
+- Node.js >= 20
+- pnpm >= 9
+
+### 构建配置
+
+项目使用 CRACO 进行构建配置自定义，配置文件位于 `craco.config.js`
+
+## 📄 License
+
+MIT
+
+## 👤 作者
+
+zhaoyifan
