@@ -1,4 +1,4 @@
-name: docs
+name: deploy
 
 # 触发条件：当代码推送到 master 分支或手动触发时运行
 on:
@@ -7,7 +7,7 @@ on:
   workflow_dispatch: # 允许在 GitHub Actions 页面手动触发
 
 jobs:
-  docs:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
