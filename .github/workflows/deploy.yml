@@ -17,11 +17,9 @@ jobs:
           # 拉取完整的 git 历史记录（用于获取提交信息等）
           fetch-depth: 0
 
-      # 设置 pnpm 包管理器
+      # 设置 pnpm 包管理器（自动从 package.json 的 packageManager 字段读取版本）
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: 9
 
       # 设置 Node.js 环境
       - name: Setup Node.js
