@@ -1,57 +1,49 @@
 name: docs
 
+# 触发条件：当代码推送到 master 分支或手动触发时运行
 on:
-  # 每当 push 到 main 分支时触发部署
   push:
     branches: [master]
-  # 手动触发部署
-  workflow_dispatch:
+  workflow_dispatch: # 允许在 GitHub Actions 页面手动触发
 
 jobs:
   docs:
     runs-on: ubuntu-latest
 
     steps:
+      # 检出代码仓库
       - uses: actions/checkout@v4
         with:
-          # "最近更新时间" 等 git 日志相关信息，需要拉取全部提交记录
+          # 拉取完整的 git 历史记录（用于获取提交信息等）
           fetch-depth: 0
 
+      # 设置 pnpm 包管理器
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      # 设置 Node.js 环境
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v3
         with:
-          # 选择要使用的 node 版本
-          node-version: '18'
+          node-version: '20' # React 19 和 react-scripts 5.x 需要 Node 18+
+          cache: 'pnpm' # 启用 pnpm 缓存以加速依赖安装
 
-      # 缓存 node_modules
-      - name: Cache dependencies
-        uses: actions/cache@v4
-        id: yarn-cache
-        with:
-          path: |
-            **/node_modules
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
-
-      # 如果缓存没有命中，安装依赖
+      # 安装项目依赖
       - name: Install dependencies
-        if: steps.yarn-cache.outputs.cache-hit != 'true'
-        run: yarn --frozen-lockfile
+        run: pnpm install --frozen-lockfile # 使用锁文件确保依赖版本一致
 
-      # 运行构建脚本
+      # 构建生产版本
       - name: Build
-        run: yarn build
+        run: pnpm build # 执行构建脚本，输出到 build 目录
 
-      # 查看 workflow 的文档来获取更多信息
-      # @see https://github.com/crazy-max/ghaction-github-pages
+      # 部署到 GitHub Pages
       - name: Deploy to GitHub Pages
         uses: crazy-max/ghaction-github-pages@v4
         with:
-          # 部署到 gh-pages 分支
-          target_branch: gh-pages
-          # 部署目录为 VuePress 的默认输出目录
-          build_dir: ./build
+          target_branch: gh-pages # 部署目标分支
+          build_dir: ./build # 构建输出目录
         env:
-          # @see https://docs.github.com/cn/actions/reference/authentication-in-a-workflow#about-the-github_token-secret
+          # GitHub Token 用于推送代码到 gh-pages 分支
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

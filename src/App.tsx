@@ -1,6 +1,9 @@
 import { Card, List } from 'antd';
 import './App.css';
 
+// 注意：Ant Design 5.x 主题配置需要在安装依赖后通过 ConfigProvider 设置
+// 当前先使用默认主题，安装依赖后可添加主题配置
+
 // 项目数据类型定义
 interface ProjectItem {
   title: string;
