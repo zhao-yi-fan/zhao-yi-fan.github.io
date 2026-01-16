@@ -4,7 +4,16 @@ html {
 
 html body #root .App {
   min-height: 100vh;
-  padding-top: 100px;
+  padding: 100px 20px 20px;
   margin: 0 auto;
-  width: 1200px;
+  max-width: 1200px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* 响应式优化 */
+@media (max-width: 768px) {
+  html body #root .App {
+    padding: 60px 16px 16px;
+  }
 }
