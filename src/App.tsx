@@ -17,11 +17,11 @@ const data: ProjectItem[] = [
     link: 'https://blog.zhaoyifan.top',
     description: 'vitepress',
   },
-  {
-    title: '移动端点餐',
-    link: './take-out-platform/',
-    description: 'vue3+vuex',
-  },
+  // {
+  //   title: '移动端点餐',
+  //   link: './take-out-platform/',
+  //   description: 'vue3+vuex',
+  // },
   // {
   //   title: 'bunny-ui',
   //   link: './bunny-ui/',
@@ -32,15 +32,20 @@ const data: ProjectItem[] = [
   //   link: './bunny-ui-next/',
   //   description: 'vue3组件库',
   // },
-  {
-    title: 'jira管理',
-    link: './jira/',
-    description: 'react17',
-  },
+  // {
+  //   title: 'jira管理',
+  //   link: './jira/',
+  //   description: 'react17',
+  // },
   {
     title: '学习总结代码',
     link: './study/',
     description: '总结小栗子',
+  },
+  {
+    title: '泡漫平台',
+    link: 'http://popreels.zhaoyifan.top/',
+    description: '自己做的泡漫平台，React',
   },
   // {
   //   title: 'netlify serverless',
