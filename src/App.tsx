@@ -44,7 +44,7 @@ const data: ProjectItem[] = [
   },
   {
     title: '泡漫平台',
-    link: 'http://popreels.zhaoyifan.top/',
+    link: 'http://8.152.208.234:8081/',
     description: '自己做的泡漫平台，React',
   },
   // {
