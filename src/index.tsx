@@ -1,7 +1,6 @@
-import React from 'react';
+import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
 import 'antd/dist/reset.css';
 
 const rootElement = document.getElementById('root');
@@ -11,9 +10,7 @@ if (!rootElement) {
 
 const root = createRoot(rootElement);
 root.render(
-  <React.StrictMode>
+  <StrictMode>
     <App />
-  </React.StrictMode>
+  </StrictMode>
 );
-
-reportWebVitals();
