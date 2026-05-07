@@ -14,6 +14,11 @@ const projects: ProjectItem[] = [
     description: 'vitepress',
   },
   {
+    title: 'bunny-ui',
+    link: './bunny-ui/',
+    description: 'vue2组件库',
+  },
+  {
     title: '学习总结代码',
     link: './study/',
     description: '总结小栗子',
