@@ -19,6 +19,11 @@ const projects: ProjectItem[] = [
     description: 'vue2组件库',
   },
   {
+    title: 'bunny-ui-next',
+    link: './bunny-ui-next/',
+    description: 'vue3组件库',
+  },
+  {
     title: '学习总结代码',
     link: './study/',
     description: '总结小栗子',
