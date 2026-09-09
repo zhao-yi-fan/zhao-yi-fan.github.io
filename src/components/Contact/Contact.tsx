@@ -86,7 +86,7 @@ export function Contact() {
       <div className="contact__glow" aria-hidden="true" />
 
       <div className="contact__inner">
-        <span className="contact__index">05</span>
+        <span className="contact__index">06</span>
           <AnimatedText
             as="h2"
             className="contact__title"
@@ -136,10 +136,7 @@ export function Contact() {
         </ul>
 
         <footer className="contact__footer">
-          <p>
-            © {new Date().getFullYear()} {profile.name} · 本站内容全部静态硬编码，无任何接口请求
-          </p>
-          <p>React 19 · TypeScript · GSAP ScrollTrigger</p>
+          <p>© {new Date().getFullYear()} {profile.name}</p>
         </footer>
       </div>
     </section>

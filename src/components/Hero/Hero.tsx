@@ -227,8 +227,8 @@ export function Hero() {
             <GithubMark />
             <span>GitHub 主页</span>
           </MagneticLink>
-          <MagneticLink href="#projects" className="btn">
-            <span>看我的项目</span>
+          <MagneticLink href="#works" className="btn">
+            <span>看我的作品</span>
           </MagneticLink>
         </div>
 

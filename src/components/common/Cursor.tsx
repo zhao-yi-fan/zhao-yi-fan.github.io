@@ -2,7 +2,7 @@ import { useRef } from 'react';
 import { gsap, MEDIA, useGSAP } from '../../lib/gsap';
 import './Cursor.css';
 
-const HOVER_SELECTOR = 'a, button, .btn, .pcard, .about__stat';
+const HOVER_SELECTOR = 'a, button, .btn, .about__stat';
 
 /**
  * 桌面端装饰光标：内点贴手，外环带一点惯性。

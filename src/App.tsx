@@ -2,6 +2,7 @@ import { ScrollTrigger, useGSAP } from './lib/gsap';
 import { About } from './components/About/About';
 import { Contact } from './components/Contact/Contact';
 import { Hero } from './components/Hero/Hero';
+import { Personal } from './components/Personal/Personal';
 import { Projects } from './components/Projects/Projects';
 import { Skills } from './components/Skills/Skills';
 import { Timeline } from './components/Timeline/Timeline';
@@ -39,6 +40,7 @@ function App() {
         <Skills />
         <Timeline />
         <Projects />
+        <Personal />
         <Contact />
       </main>
     </>

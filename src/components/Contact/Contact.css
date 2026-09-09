@@ -111,10 +111,6 @@
 }
 
 .contact__footer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: var(--sp-1);
   margin-top: var(--sp-8);
   font-size: var(--fs-xs);
   color: var(--c-text-faint);

@@ -47,10 +47,16 @@ export interface Project {
   title: string;
   description: string;
   detail: string;
-  /** 没有公开地址就留空，卡片不可点 */
-  link?: string;
+  tags: string[];
+}
+
+export interface PersonalProject {
+  title: string;
+  description: string;
+  detail: string;
+  link: string;
   /** true 表示站外地址，false 表示部署在同域子目录下 */
-  external?: boolean;
+  external: boolean;
   tags: string[];
 }
 
@@ -175,13 +181,36 @@ export const projects: Project[] = [
       'Lerna 维护内部 Element UI 组件库；Rollup 打包版本更新检测工具并配文档站；主导 Vue 项目 Webpack → Vite 迁移。',
     tags: ['Rollup', 'Lerna', 'Vite'],
   },
+];
+
+/**
+ * 可以点开的个人项目，链接一律写绝对地址。
+ */
+export const personalProjects: PersonalProject[] = [
+  {
+    title: '漫剧',
+    description: 'React 内容平台',
+    detail:
+      '独立开发并部署上线的漫剧内容站，覆盖前端界面、接口对接和服务器部署全流程。',
+    link: 'http://8.152.208.234:8081/',
+    external: true,
+    tags: ['React', '全流程'],
+  },
   {
     title: '技术笔记',
-    description: '个人博客',
-    detail: '公开的技术笔记站，记录框架、工程化与 Hybrid 实践，不涉及任职公司的内部细节。',
+    description: 'VitePress 博客',
+    detail: '技术笔记站，记录框架、工程化与 Hybrid 实践。',
     link: 'https://blog.zhaoyifan.top',
     external: true,
-    tags: ['VitePress', '笔记'],
+    tags: ['VitePress', 'Markdown'],
+  },
+  {
+    title: '学习总结',
+    description: '最小可运行示例',
+    detail: '把学过的知识点写成能直接跑的小例子，方便回顾。',
+    link: 'https://zhaoyifan.top/study/',
+    external: true,
+    tags: ['示例', '教学'],
   },
 ];
 
@@ -190,5 +219,6 @@ export const sections = [
   { id: 'skills', label: '技能' },
   { id: 'experience', label: '经历' },
   { id: 'projects', label: '项目' },
+  { id: 'works', label: '作品' },
   { id: 'contact', label: '联系' },
 ] as const;

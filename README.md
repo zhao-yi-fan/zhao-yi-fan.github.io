@@ -42,9 +42,10 @@ pnpm build
 | --- | --- | --- |
 | 首屏 | `src/components/Hero` | SplitText 逐字遮罩揭示、鼠标视差光晕、滚动淡出 |
 | 关于我 | `src/components/About` | 数字滚动计数 |
-| 技能 | `src/components/Skills` | 能力条随滚动进度增长（scrub） |
+| 技能 | `src/components/Skills` | 能力条进入视口后播放一次增长 |
 | 工作经历 | `src/components/Timeline` | 侧栏 pin 钉住、DrawSVG 线绘、节点逐个激活 |
-| 项目 | `src/components/Projects` | 桌面端 pin + 横向滚动、卡片 3D 倾斜 |
+| 项目 | `src/components/Projects` | 任职案例列表逐条进场 |
+| 作品 | `src/components/Personal` | 个人项目卡片进场、桌面端轻微倾斜 |
 | 联系 | `src/components/Contact` | 磁吸按钮 |
 
 GSAP 插件在 [`src/lib/gsap.ts`](src/lib/gsap.ts) 统一注册，断点常量也定义在这里。
@@ -54,12 +55,11 @@ GSAP 插件在 [`src/lib/gsap.ts`](src/lib/gsap.ts) 统一注册，断点常量�
 
 - 断点分流用 `gsap.matchMedia()`，不手写 `window.innerWidth` 判断，断点切换时 GSAP 自动清理重建。
 - 命中 `prefers-reduced-motion: reduce` 时走静态分支：不切分文字、不位移、不 pin，内容直接可见。
-- 项目区的横向布局由 JS 加 `is-horizontal` 类名才生效，默认是竖向网格，保证不启用 pin 的环境里卡片始终可读可点。
 - 字体加载完成后调用 `ScrollTrigger.refresh()`，避免 pin 的起止位置算错。
 
 ## 项目说明
 
 - `craco.config.js` 把打包产物的 `publicPath` 设为相对路径，便于 GitHub Pages 和静态目录部署。
-- 项目卡片的 `link` 可选。有地址才渲染为 `<a>`；任职项目默认不外链。
+- 项目区是只读案例列表。可点开的个人项目在「作品」章节。
 - 仓库统一使用 `pnpm-lock.yaml`，不再维护 `package-lock.json` 和 `yarn.lock`。
 - 当前未维护自动化测试，保留 `pnpm test` 脚本仅用于后续补充测试时复用。
