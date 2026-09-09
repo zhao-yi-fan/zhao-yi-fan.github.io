@@ -71,10 +71,10 @@ export const profile: Profile = {
 };
 
 export const stats: Stat[] = [
-  { label: '前端开发年限', value: 5, suffix: '年' },
-  { label: '任职经历', value: 3, suffix: '段' },
+  { label: '前端开发年限', value: 7, suffix: '年' },
   { label: '面向用户规模', value: 100, suffix: '万+' },
   { label: '智能体业务', value: 3, suffix: '个' },
+  { label: '首屏 FCP 提升', value: 37, suffix: '%' },
 ];
 
 export const skillGroups: SkillGroup[] = [
