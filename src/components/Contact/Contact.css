@@ -1,0 +1,136 @@
+.contact {
+  position: relative;
+  padding: var(--sp-12) var(--sp-3) var(--sp-6);
+  overflow: hidden;
+}
+
+.contact__glow {
+  position: absolute;
+  left: 50%;
+  bottom: -30vw;
+  width: 70vw;
+  height: 70vw;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, var(--c-glow-b), transparent 62%);
+  filter: blur(100px);
+  opacity: var(--glow-opacity);
+  pointer-events: none;
+}
+
+.contact__inner {
+  position: relative;
+  max-width: var(--maxw);
+  margin: 0 auto;
+}
+
+.contact__index {
+  display: block;
+  font-size: var(--fs-sm);
+  letter-spacing: 0.3em;
+  color: var(--c-accent);
+  font-variant-numeric: tabular-nums;
+  margin-bottom: var(--sp-1);
+}
+
+.contact__title {
+  font-size: clamp(3.6rem, 9vw, 8.2rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  perspective: 90rem;
+  transform-origin: left center;
+  will-change: transform;
+}
+
+.contact__lead {
+  margin-top: var(--sp-2);
+  font-size: var(--fs-lead);
+  color: var(--c-text-dim);
+  max-width: 48ch;
+}
+
+.contact__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin-top: var(--sp-4);
+}
+
+.contact__list {
+  margin-top: var(--sp-8);
+  border-top: 1px solid var(--c-border);
+}
+
+.contact__row a {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-3);
+  padding: var(--sp-2) 0;
+  border-bottom: 1px solid var(--c-border);
+  position: relative;
+  transition: color var(--dur) var(--ease-out),
+    padding-left var(--dur) var(--ease-out);
+}
+
+.contact__row a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  background: var(--grad-accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--dur) var(--ease-out);
+}
+
+.contact__row a:hover {
+  color: var(--c-accent);
+  padding-left: var(--sp-2);
+}
+
+.contact__row a:hover::after {
+  transform: scaleX(1);
+}
+
+.contact__label {
+  flex: 0 0 10rem;
+  font-size: var(--fs-sm);
+  letter-spacing: 0.16em;
+  color: var(--c-text-faint);
+}
+
+.contact__row a:hover .contact__label {
+  color: inherit;
+}
+
+.contact__value {
+  font-size: var(--fs-lead);
+  word-break: break-all;
+}
+
+.contact__footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--sp-1);
+  margin-top: var(--sp-8);
+  font-size: var(--fs-xs);
+  color: var(--c-text-faint);
+}
+
+@media (max-width: 640px) {
+  .contact {
+    padding: var(--sp-8) var(--sp-2) var(--sp-4);
+  }
+
+  .contact__label {
+    flex-basis: 7rem;
+  }
+
+  .contact__actions .btn {
+    flex: 1 1 100%;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,86 @@
+.skills {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+  gap: var(--sp-3);
+}
+
+.skills__group {
+  padding: var(--sp-4) var(--sp-3);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius);
+  background: var(--c-bg-card);
+  box-shadow: var(--shadow-card);
+  position: relative;
+  overflow: hidden;
+}
+
+/* 顶部一道渐变高光，hover 时点亮 */
+.skills__group::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--grad-accent);
+  opacity: 0.25;
+  transition: opacity var(--dur) var(--ease-out);
+}
+
+.skills__group:hover::before {
+  opacity: 1;
+}
+
+.skills__head {
+  margin-bottom: var(--sp-3);
+}
+
+.skills__title {
+  font-size: var(--fs-h3);
+  font-weight: 650;
+}
+
+.skills__caption {
+  margin-top: 0.2em;
+  font-size: var(--fs-sm);
+  color: var(--c-text-faint);
+}
+
+.skills__list {
+  display: grid;
+  gap: var(--sp-2);
+}
+
+.skill__meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.6rem;
+  font-size: var(--fs-sm);
+}
+
+.skill__name {
+  color: var(--c-text);
+}
+
+.skill__level {
+  color: var(--c-text-faint);
+  font-variant-numeric: tabular-nums;
+}
+
+.skill__track {
+  height: 4px;
+  border-radius: 999px;
+  background: var(--c-track);
+  overflow: hidden;
+}
+
+.skill__fill {
+  display: block;
+  height: 100%;
+  border-radius: 999px;
+  background: var(--grad-accent);
+  /* scaleX 由 GSAP 驱动，原点必须在左侧 */
+  transform-origin: left center;
+  will-change: transform;
+}

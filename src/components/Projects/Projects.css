@@ -1,0 +1,231 @@
+.projects {
+  position: relative;
+  padding: var(--sp-12) var(--sp-3);
+}
+
+.projects__viewport {
+  max-width: var(--maxw);
+  margin: 0 auto;
+}
+
+/* --- 标题区 --- */
+
+.projects__index {
+  display: block;
+  font-size: var(--fs-sm);
+  letter-spacing: 0.3em;
+  color: var(--c-accent);
+  font-variant-numeric: tabular-nums;
+  margin-bottom: var(--sp-1);
+}
+
+.projects__title {
+  font-size: var(--fs-h2);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  perspective: 90rem;
+}
+
+.projects__caption {
+  margin-top: var(--sp-1);
+  color: var(--c-text-dim);
+  font-size: var(--fs-lead);
+  max-width: 60ch;
+}
+
+/* 横向滚动进度条，只有开启横向模式时才显示 */
+.projects__progress {
+  display: none;
+  height: 2px;
+  margin-top: var(--sp-3);
+  background: var(--c-track);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.projects__bar {
+  display: block;
+  height: 100%;
+  background: var(--grad-accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  will-change: transform;
+}
+
+/* --- 卡片轨道：默认竖向，可读性优先 --- */
+
+.projects__track {
+  display: grid;
+  gap: var(--sp-3);
+  margin-top: var(--sp-6);
+}
+
+/* --- 横向模式（由 JS 在桌面端加上 is-horizontal 后生效） --- */
+
+.projects.is-horizontal {
+  height: 100vh;
+  height: 100svh;
+  /* 钉住时整屏都要放得下标题和卡片，收紧上下留白 */
+  padding-block: var(--sp-6);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.projects.is-horizontal .projects__viewport {
+  width: 100%;
+}
+
+/**
+ * 卡片在容器右边缘裁切，否则会一路溢出到视口边缘压住右侧章节导航。
+ * 用 clip 而不是 hidden：clip 不会生成滚动容器，
+ * 键盘聚焦到屏幕外的卡片时浏览器不会私自横向滚动，和 GSAP 的位移冲突。
+ * clip-margin 给 hover 阴影和 3D 倾斜留出垂直余量。
+ */
+.projects.is-horizontal .projects__stage {
+  overflow: clip;
+  overflow-clip-margin: 4rem;
+}
+
+.projects.is-horizontal .projects__progress {
+  display: block;
+}
+
+.projects.is-horizontal .projects__track {
+  display: flex;
+  grid-template-columns: none;
+  gap: var(--sp-3);
+  margin-top: var(--sp-4);
+  will-change: transform;
+}
+
+.projects.is-horizontal .pcard {
+  flex: 0 0 34rem;
+}
+
+/* --- 卡片 --- */
+
+.pcard {
+  will-change: transform;
+}
+
+.pcard__link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: var(--sp-1);
+  padding: var(--sp-4) var(--sp-3);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius);
+  background: var(--c-bg-card);
+  box-shadow: var(--shadow-card);
+  position: relative;
+  isolation: isolate;
+  --mx: 50%;
+  --my: 50%;
+  transition: border-color var(--dur) var(--ease-out),
+    box-shadow var(--dur) var(--ease-out);
+}
+
+.pcard__link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    380px circle at var(--mx) var(--my),
+    rgba(14, 116, 144, 0.16),
+    transparent 55%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur) var(--ease-out);
+  z-index: 0;
+}
+
+.pcard__link:hover {
+  border-color: var(--c-accent);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.pcard__link:hover::after {
+  opacity: 1;
+}
+
+.pcard__link > * {
+  position: relative;
+  z-index: 1;
+}
+
+.pcard__no {
+  font-size: var(--fs-xs);
+  letter-spacing: 0.3em;
+  color: var(--c-text-faint);
+  font-variant-numeric: tabular-nums;
+}
+
+.pcard__title {
+  font-size: var(--fs-h3);
+  font-weight: 700;
+}
+
+.pcard__desc {
+  color: var(--c-accent);
+  font-size: var(--fs-sm);
+  letter-spacing: 0.04em;
+}
+
+.pcard__detail {
+  margin-top: var(--sp-1);
+  color: var(--c-text-dim);
+  font-size: var(--fs-sm);
+}
+
+.pcard__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: var(--sp-2);
+}
+
+.pcard__tags li {
+  padding: 0.3rem 1rem;
+  border: 1px solid var(--c-border);
+  border-radius: 999px;
+  font-size: var(--fs-xs);
+  color: var(--c-text-faint);
+}
+
+.pcard__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  /* 把动作推到卡片底部，横向模式下各卡高度一致时更整齐 */
+  margin-top: auto;
+  padding-top: var(--sp-3);
+  font-size: var(--fs-sm);
+  color: var(--c-text);
+}
+
+.pcard__cta svg {
+  transition: transform var(--dur) var(--ease-out);
+}
+
+.pcard__link:hover .pcard__cta svg {
+  transform: translateX(5px);
+}
+
+.pcard__link--static {
+  cursor: default;
+}
+
+.pcard__cta--muted {
+  color: var(--c-text-faint);
+}
+
+@media (max-width: 640px) {
+  .projects {
+    padding: var(--sp-8) var(--sp-2);
+  }
+}

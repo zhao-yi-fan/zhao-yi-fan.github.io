@@ -1,0 +1,86 @@
+.nav__progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 50;
+  background: var(--c-track);
+}
+
+.nav__bar {
+  display: block;
+  height: 100%;
+  background: var(--grad-accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  will-change: transform;
+}
+
+.nav__anchors {
+  position: fixed;
+  right: var(--sp-3);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 40;
+}
+
+.nav__anchors ul {
+  display: grid;
+  gap: var(--sp-2);
+}
+
+.nav__anchors a {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--sp-1);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.16em;
+  color: var(--c-text-faint);
+  transition: color var(--dur) var(--ease-out);
+}
+
+.nav__label {
+  opacity: 0;
+  transform: translateX(6px);
+  transition: opacity var(--dur) var(--ease-out),
+    transform var(--dur) var(--ease-out);
+}
+
+.nav__anchors a:hover .nav__label,
+.nav__anchors a.is-active .nav__label {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.nav__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--c-text-faint);
+  transition: background-color var(--dur) var(--ease-out),
+    box-shadow var(--dur) var(--ease-out), transform var(--dur) var(--ease-out);
+}
+
+.nav__anchors a:hover,
+.nav__anchors a.is-active {
+  color: var(--c-accent);
+}
+
+.nav__anchors a.is-active .nav__dot {
+  background: var(--c-accent);
+  box-shadow: 0 0 0 4px var(--c-accent-ring);
+  transform: scale(1.35);
+}
+
+/**
+ * 内容容器最宽 112rem，居中后右边缘约在 (vw + 1120) / 2，
+ * 锚点连标签占到 vw - 67 附近，两者在约 1254px 以下会相撞。
+ * 取 1280px 作为分界，窄屏只保留顶部进度条。
+ */
+@media (max-width: 1279px) {
+  .nav__anchors {
+    display: none;
+  }
+}

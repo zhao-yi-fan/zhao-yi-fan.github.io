@@ -1,0 +1,162 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  /* 1rem = 10px，配合 tokens 里的 rem 阶梯 */
+  font-size: 62.5%;
+  -webkit-text-size-adjust: 100%;
+  /**
+   * 这里刻意不用 scroll-behavior: smooth。
+   * 它和 ScrollTrigger 的 pin 会互相干扰：原生平滑滚动期间浏览器持续改写滚动位置，
+   * 钉住区间的进度计算会跟不上，表现为卡顿和错位。
+   * 锚点跳转改由 SiteNav 用 ScrollToPlugin 驱动。
+   */
+}
+
+html.is-intro {
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  background: var(--c-bg);
+  color: var(--c-text);
+  font-size: var(--fs-body);
+  line-height: 1.7;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC',
+    'Hiragino Sans GB', 'Microsoft YaHei', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+ol,
+figure {
+  margin: 0;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+:focus-visible {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+::selection {
+  background: var(--c-accent-2);
+  color: var(--c-on-accent);
+}
+
+/* --- 按钮 --- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-1);
+  padding: 1.4rem 2.6rem;
+  border: 1px solid var(--c-border-strong);
+  border-radius: 999px;
+  font-size: var(--fs-sm);
+  letter-spacing: 0.04em;
+  background: var(--c-bg-card);
+  box-shadow: var(--shadow-card);
+  transition: border-color var(--dur) var(--ease-out),
+    box-shadow var(--dur) var(--ease-out), color var(--dur) var(--ease-out);
+  /* 磁吸位移写在 transform 上，这里不要再用 transform 过渡 */
+  will-change: transform;
+}
+
+.btn:hover {
+  border-color: var(--c-accent);
+  color: var(--c-accent);
+}
+
+.btn--primary {
+  border-color: transparent;
+  background: var(--grad-accent);
+  color: var(--c-on-accent);
+  font-weight: 600;
+}
+
+.btn--primary:hover {
+  color: var(--c-on-accent);
+  filter: brightness(1.08);
+}
+
+/* 只给读屏软件的文本：视觉上不可见，但仍在无障碍树里，
+   所以不能用 display: none 或 visibility: hidden（那会被一并移除）。 */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* 渐变文字。注意不要用在被 SplitText 切分的元素上：
+   切分后每个字符是独立元素，父级的 background-clip: text 不会作用到子元素。 */
+.grad-text {
+  background: var(--grad-accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* 进场动画的初始态一律由 useGSAP 内的 gsap.set/from 设置。
+   useGSAP 走 useLayoutEffect，在浏览器绘制前执行，所以不会闪现未动画的内容，
+   也不需要在 CSS 里预埋 opacity: 0（那会导致 JS 失败时页面全空）。 */
+
+/* 一层极淡噪点压在内容上，让浅色大面积不那么“塑料”。
+   mix-blend-mode: multiply 在浅底上只会略微压暗，不会改变色相。 */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 80;
+  opacity: 0.04;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::after {
+    display: none;
+  }
+}
+

@@ -1,0 +1,295 @@
+.hero {
+  position: relative;
+  /* svh 排除移动端地址栏，不支持时回退到 vh */
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--sp-8) var(--sp-3);
+  overflow: hidden;
+}
+
+/* --- 背景层 --- */
+
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hero__grid {
+  position: absolute;
+  /* 向外扩一圈，视差位移时不会露出边缘 */
+  inset: -10%;
+  background-image: linear-gradient(
+      to right,
+      var(--c-line) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, var(--c-line) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, #000 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(
+    ellipse 70% 60% at 50% 45%,
+    #000 40%,
+    transparent 100%
+  );
+}
+
+.hero__glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: var(--glow-opacity);
+  will-change: transform;
+}
+
+.hero__glow--a {
+  width: 46vw;
+  height: 46vw;
+  top: -8vw;
+  left: -6vw;
+  background: radial-gradient(circle, var(--c-glow-a), transparent 65%);
+}
+
+.hero__glow--b {
+  width: 40vw;
+  height: 40vw;
+  right: -8vw;
+  bottom: -10vw;
+  background: radial-gradient(circle, var(--c-glow-b), transparent 65%);
+}
+
+.hero__vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 50% 40%,
+    transparent 30%,
+    var(--c-bg) 88%
+  );
+}
+
+.hero__spot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 52vw;
+  height: 52vw;
+  margin: -26vw 0 0 -26vw;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--c-glow-a), transparent 68%);
+  opacity: 0.42;
+  filter: blur(28px);
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* --- 技能名跑马灯：描边大字，不抢姓名的对比度 --- */
+
+.hero__marquee {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 11vh;
+  overflow: hidden;
+  pointer-events: none;
+  mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 10%,
+    #000 90%,
+    transparent
+  );
+}
+
+.hero__marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 38s linear infinite;
+}
+
+.hero__marquee-copy {
+  display: flex;
+  gap: 4.8rem;
+  padding-right: 4.8rem;
+  font-size: clamp(3.6rem, 8vw, 8rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--c-border-strong);
+  white-space: nowrap;
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* --- 内容层 --- */
+
+.hero__content {
+  position: relative;
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+}
+
+.hero__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-1);
+  font-size: var(--fs-sm);
+  letter-spacing: 0.18em;
+  color: var(--c-text-dim);
+  margin-bottom: var(--sp-2);
+}
+
+.hero__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--c-accent);
+  box-shadow: 0 0 0 4px var(--c-accent-ring);
+  animation: dot-pulse 2.4s var(--ease-out) infinite;
+}
+
+.hero__name {
+  font-size: var(--fs-hero);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  /* 遮罩揭示的 mask 元素按行高裁切，留一点垂直余量避免切到字形 */
+  padding-block: 0.06em;
+  perspective: 90rem;
+  transform-origin: left center;
+  will-change: transform;
+}
+
+.hero__tagline {
+  margin-top: var(--sp-2);
+  font-size: var(--fs-lead);
+  color: var(--c-text-dim);
+  max-width: 46ch;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  margin-top: var(--sp-4);
+}
+
+.hero__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-1) var(--sp-3);
+  margin-top: var(--sp-4);
+  font-size: var(--fs-sm);
+  color: var(--c-text-faint);
+}
+
+.hero__links a {
+  position: relative;
+  transition: color var(--dur) var(--ease-out);
+}
+
+.hero__links a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -2px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--dur) var(--ease-out);
+}
+
+.hero__links a:hover {
+  color: var(--c-accent);
+}
+
+.hero__links a:hover::after {
+  transform: scaleX(1);
+}
+
+/* --- 滚动提示 --- */
+
+.hero__hint {
+  position: absolute;
+  left: 50%;
+  bottom: var(--sp-4);
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-1);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.2em;
+  color: var(--c-text-faint);
+}
+
+.hero__hint-line {
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(to bottom, transparent, var(--c-accent));
+  animation: hint-slide 2s var(--ease-out) infinite;
+}
+
+@keyframes hint-slide {
+  0%,
+  100% {
+    transform: scaleY(0.4);
+    transform-origin: top center;
+    opacity: 0.4;
+  }
+  50% {
+    transform: scaleY(1);
+    transform-origin: top center;
+    opacity: 1;
+  }
+}
+
+@keyframes dot-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 4px var(--c-accent-ring);
+  }
+  55% {
+    box-shadow: 0 0 0 11px transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__hint-line,
+  .hero__dot,
+  .hero__marquee-track {
+    animation: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding: var(--sp-8) var(--sp-2);
+  }
+
+  .hero__hint {
+    display: none;
+  }
+
+  .hero__marquee,
+  .hero__spot {
+    display: none;
+  }
+
+  .hero__actions .btn {
+    flex: 1 1 100%;
+    justify-content: center;
+  }
+}

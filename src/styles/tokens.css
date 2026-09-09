@@ -1,0 +1,76 @@
+:root {
+  /* 底色：浅灰蓝打底，卡片用纯白抬升层级 */
+  --c-bg: #f4f6fb;
+  --c-bg-raise: #ffffff;
+  --c-bg-card: #ffffff;
+  --c-border: rgba(18, 20, 31, 0.1);
+  --c-border-strong: rgba(18, 20, 31, 0.2);
+
+  /* 发丝线：网格用极淡，进度槽要看得见 */
+  --c-line: rgba(18, 20, 31, 0.06);
+  --c-track: rgba(18, 20, 31, 0.1);
+
+  /* 文本 */
+  /* 三档文字色对底色的对比度依次约为 14.6 : 7.3 : 4.9，均达到 WCAG AA */
+  --c-text: #12141f;
+  --c-text-dim: #4b5169;
+  --c-text-faint: #646a82;
+
+  /**
+   * 强调色。浅底上必须比暗色主题更深才够对比度，
+   * 原来那套霓虹亮色（#6ee7ff 之类）在白底上会糊成一片。
+   * accent 用作小字（章节序号、卡片副标题），白底对比度约 5.4，达到 AA。
+   */
+  --c-accent: #0e7490;
+  --c-accent-2: #7c3aed;
+  --c-accent-3: #db2777;
+  --grad-accent: linear-gradient(
+    120deg,
+    var(--c-accent),
+    var(--c-accent-2) 55%,
+    var(--c-accent-3)
+  );
+  /* 填色按钮/选中态上的文字色 */
+  --c-on-accent: #ffffff;
+  /* 光圈、聚焦环这类半透明强调色 */
+  --c-accent-ring: rgba(14, 116, 144, 0.18);
+
+  /**
+   * 装饰性光晕。浅底上用饱和度低的浅色调，
+   * 直接铺强调色会显脏。
+   */
+  --c-glow-a: #7dd3fc;
+  --c-glow-b: #f9a8d4;
+  --glow-opacity: 0.55;
+
+  /* 阴影：浅色主题靠投影而不是描边来分层 */
+  --shadow-card: 0 1px 2px rgba(18, 20, 31, 0.04),
+    0 10px 30px -18px rgba(18, 20, 31, 0.25);
+  --shadow-card-hover: 0 2px 4px rgba(18, 20, 31, 0.05),
+    0 22px 55px -22px rgba(14, 116, 144, 0.45);
+
+  /* 字号阶梯 */
+  --fs-hero: clamp(3.2rem, 11vw, 9rem);
+  --fs-h2: clamp(2.4rem, 5vw, 4rem);
+  --fs-h3: clamp(1.8rem, 2.4vw, 2.2rem);
+  --fs-lead: clamp(1.6rem, 2vw, 1.9rem);
+  --fs-body: 1.6rem;
+  --fs-sm: 1.4rem;
+  --fs-xs: 1.2rem;
+
+  /* 间距 */
+  --sp-1: 0.8rem;
+  --sp-2: 1.6rem;
+  --sp-3: 2.4rem;
+  --sp-4: 3.2rem;
+  --sp-6: 4.8rem;
+  --sp-8: 6.4rem;
+  --sp-12: 9.6rem;
+
+  --maxw: 112rem;
+  --radius: 1.6rem;
+  --radius-sm: 0.8rem;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur: 0.4s;
+}
